@@ -28,12 +28,12 @@ const galleryItems = [
       title: "Minimalist Galley Kitchen",
       categories: ["Galley", "Modern", "Handleless"],
     },
-    {
-      src: "/p7.jpg",
-      alt: "L-shaped kitchen with breakfast bar",
-      title: "L-shaped Kitchen with Breakfast Bar",
-      categories: ["L-shaped", "Modern"],
-    },
+    // {
+    //   src: "/p7.jpg",
+    //   alt: "L-shaped kitchen with breakfast bar",
+    //   title: "L-shaped Kitchen with Breakfast Bar",
+    //   categories: ["L-shaped", "Modern"],
+    // },
     {
       src: "/p8.jpg",
       alt: "U-shaped kitchen with glass cabinets",
