@@ -19,7 +19,7 @@ import Link from "next/link"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { ColorThemeSelector } from "@/components/color-theme-selector"
 import { Navbar } from "@/components/navbar"
-import Feedback from "@/components/feedback"
+import Feedback from "@/components/Feedback"
 
 const features = [
   {

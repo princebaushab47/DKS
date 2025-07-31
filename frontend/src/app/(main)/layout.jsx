@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react"
-import Feedback from "@/components/feedback"
+import Feedback from "@/components/Feedback"
 import { Navbar } from "@/components/navbar"
 import { MessageSquare } from "lucide-react"
 import { Toaster } from "react-hot-toast"
