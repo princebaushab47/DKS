@@ -3,64 +3,57 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useEffect, useState } from 'react';
 
-
 export default function AdminDashboard() {
-  const [contacts, setContacts] = useState(0)
-  const [feedback, setFeedback] = useState(0)
-  const [user, setUser] = useState(null)
+  const [contacts, setContacts] = useState(0);
+  const [feedback, setFeedback] = useState(0);
+  const [userCount, setUserCount] = useState(0);
+  const [authChecked, setAuthChecked] = useState(false);
 
-
-  const fetchContacts = async () => {
-    const res = await axios.get('http://localhost:5000/contact/getall');
-    // console.log(res.data);
-    setContacts(res.data.length);
-  }
-  const fetchFeedbacks = async () => {
-    const res = await axios.get('http://localhost:5000/feedback/getall');
-    // console.log(res.data);
-    setFeedback(res.data.length);
-  }
-  const fetchuser = async () => {
-    const res = await axios.get('http://localhost:5000/user/getall');
-    // console.log(res.data);
-    setUser(res.data.length);
-  }
-
+  // Auth check
   useEffect(() => {
-    // This runs only on the client
     const token = localStorage.getItem('user');
-    if (token) {
-      setUser(token);
+    if (!token) {
+      window.location.href = '/login';
+      return;
+    }
+    try {
+      const decoded = jwtDecode(token);
+      if (decoded.role !== 'admin') {
+        window.location.href = '/login';
+        return;
+      }
+      setAuthChecked(true);
+    } catch (err) {
+      window.location.href = '/login';
     }
   }, []);
 
+  // Fetch dashboard data after auth
   useEffect(() => {
-    if (!user) {
-      window.location.href = '/login';
-    }
-    const decoded = jwtDecode(user);
-    if (decoded.role !== 'admin') {
-      window.location.href = '/login';
-    }
-  }, [user]);
+    if (!authChecked) return;
+    const fetchData = async () => {
+      try {
+        const [contactsRes, feedbackRes, usersRes] = await Promise.all([
+          axios.get('http://localhost:5000/contact/getall'),
+          axios.get('http://localhost:5000/feedback/getall'),
+          axios.get('http://localhost:5000/user/getall'),
+        ]);
+        setContacts(contactsRes.data.length);
+        setFeedback(feedbackRes.data.length);
+        setUserCount(usersRes.data.length);
+      } catch (err) {
+        // Optionally handle error
+      }
+    };
+    fetchData();
+  }, [authChecked]);
 
-
-
-  useEffect(() => {
-    fetchContacts();
-    fetchFeedbacks();
-    fetchuser();
-  }, []);
-
-
-
-  if (!user) {
+  if (!authChecked) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="flex min-h-screen bg-background">
-      {/* Sidebar is now handled by layout */}
       <main className="flex-1 p-4 md:p-10">
         <h1 className="text-2xl md:text-3xl font-bold mb-6">Admin Dashboard</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 border border-gray-400">
@@ -74,10 +67,10 @@ export default function AdminDashboard() {
           </div>
           <div className="bg-card rounded-lg p-4 md:p-6 shadow">
             <h2 className="text-base md:text-lg font-semibold mb-2">Total Users</h2>
-            <p className="text-2xl md:text-3xl font-bold">{user}</p>
+            <p className="text-2xl md:text-3xl font-bold">{userCount}</p>
           </div>
         </div>
       </main>
     </div>
-  )
+  );
 }
