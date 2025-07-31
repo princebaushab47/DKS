@@ -1,0 +1,7 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#f5f5f5"/>
+  <rect x="0.5" y="0.5" width="799" height="599" stroke="#e5e5e5"/>
+  <path d="M400 200L440 280H360L400 200Z" fill="#d1d1d1"/>
+  <rect x="360" y="280" width="80" height="60" fill="#d1d1d1"/>
+  <text x="400" y="380" font-family="Arial" font-size="24" text-anchor="middle" fill="#888888">Kitchen Image</text>
+</svg> 
