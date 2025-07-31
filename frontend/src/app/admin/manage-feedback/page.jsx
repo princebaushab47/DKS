@@ -1,11 +1,11 @@
 "use client";
+import React, { useEffect, useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
 import { Button } from "@/components/ui/button"
-import { jwtDecode } from "jwt-decode";
-import React from "react";
-import { useEffect, useState } from "react";
 
-export default function ManageFeedback() {
+const ManageFeedback = () => {
   const [feedbacks, setFeedbacks] = useState([])
+  const [authChecked, setAuthChecked] = useState(false);
 
   const fetchFeedbacks = async () => {
     try {
@@ -24,21 +24,29 @@ export default function ManageFeedback() {
     }
   }
 
-  const token = localStorage.getItem('user');
-  const decoded = jwtDecode(token);
-  // console.log(decoded.role);
   useEffect(() => {
+    const token = localStorage.getItem('user');
     if (!token) {
       window.location.href = '/login';
+      return;
     }
-    if (decoded.role !== 'admin') {
+    try {
+      const decoded = jwtDecode(token);
+      if (decoded.role !== 'admin') {
+        window.location.href = '/login';
+        return;
+      }
+      setAuthChecked(true);
+    } catch (err) {
       window.location.href = '/login';
     }
-  }, [token]);
+  }, []);
 
   useEffect(() => {
-    fetchFeedbacks();
-  }, []);
+    if (authChecked) {
+      fetchFeedbacks();
+    }
+  }, [authChecked]);
 
   const handleDelete = async (feedbackId) => {
     try {
@@ -54,6 +62,10 @@ export default function ManageFeedback() {
     } catch (error) {
       console.error("Error deleting feedback:", error);
     }
+  }
+
+  if (!authChecked) {
+    return null; // Or a loading spinner
   }
 
   return (
@@ -98,3 +110,5 @@ export default function ManageFeedback() {
     </div>
   )
 }
+
+export default ManageFeedback;

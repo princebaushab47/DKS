@@ -1,14 +1,13 @@
 'use client'
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 export default function AdminDashboard() {
-
   const [contacts, setContacts] = useState(0)
   const [feedback, setFeedback] = useState(0)
-  const [user, setUser] = useState(0)
+  const [user, setUser] = useState(null)
 
 
   const fetchContacts = async () => {
@@ -27,17 +26,23 @@ export default function AdminDashboard() {
     setUser(res.data.length);
   }
 
-  const token = localStorage.getItem('user');
-  // console.log(decoded.role);
   useEffect(() => {
-    if (!token) {
+    // This runs only on the client
+    const token = localStorage.getItem('user');
+    if (token) {
+      setUser(token);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!user) {
       window.location.href = '/login';
     }
-    const decoded = jwtDecode(token);
+    const decoded = jwtDecode(user);
     if (decoded.role !== 'admin') {
       window.location.href = '/login';
     }
-  }, [token]);
+  }, [user]);
 
 
 
@@ -48,6 +53,10 @@ export default function AdminDashboard() {
   }, []);
 
 
+
+  if (!user) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="flex min-h-screen bg-background">

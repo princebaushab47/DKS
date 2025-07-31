@@ -1,12 +1,12 @@
 'use client'
 import { Button } from "@/components/ui/button"
 import { jwtDecode } from "jwt-decode";
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-export default function ManageContact() {
-  const [contacts, setContacts] = useState([])
+const ManageContact = () => {
+  const [contacts, setContacts] = useState([]);
+  const [authChecked, setAuthChecked] = useState(false);
 
   const fetchContacts = async () => {
     try {
@@ -19,31 +19,35 @@ export default function ManageContact() {
       if (!response.ok) throw new Error("Failed to fetch contacts");
       const data = await response.json();
       setContacts(data);
-      // console.log(data); // Handle the fetched contacts
     } catch (error) {
       console.error("Error fetching contacts:", error);
     }
-  }
+  };
 
-
-  const token = localStorage.getItem('user');
-  const decoded = jwtDecode(token);
-  // console.log(decoded.role);
   useEffect(() => {
+    // Run only on client
+    const token = localStorage.getItem('user');
     if (!token) {
       window.location.href = '/login';
+      return;
     }
-    if (decoded.role !== 'admin') {
+    try {
+      const decoded = jwtDecode(token);
+      if (decoded.role !== 'admin') {
+        window.location.href = '/login';
+        return;
+      }
+      setAuthChecked(true);
+    } catch (err) {
       window.location.href = '/login';
     }
-  }, [token]);
-
-  useEffect(() => {
-    fetchContacts();
   }, []);
 
-
-  
+  useEffect(() => {
+    if (authChecked) {
+      fetchContacts();
+    }
+  }, [authChecked]);
 
   const handleDelete = async (contactId) => {
     try {
@@ -56,13 +60,15 @@ export default function ManageContact() {
       if (!response.ok) throw new Error("Failed to delete contact");
       toast.success("Contact deleted successfully");
       setContacts(prev => prev.filter(contact => contact._id !== contactId));
-      console.log("Contact deleted successfully");
     } catch (error) {
       console.error("Error deleting contact:", error);
       toast.error("Failed to delete contact");
     }
-  }
+  };
 
+  if (!authChecked) {
+    return null; // Or a loading spinner
+  }
 
   return (
     <div className="flex min-h-screen bg-background">
@@ -106,3 +112,5 @@ export default function ManageContact() {
     </div>
   )
 }
+
+export default ManageContact;

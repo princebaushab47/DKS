@@ -1,11 +1,11 @@
 'use client';
+import React, { useEffect, useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
 import { Button } from "@/components/ui/button"
-import { jwtDecode } from "jwt-decode";
-import React from "react";
-import { useEffect, useState } from "react";
 
-export default function ManageUser() {
+const ManageUser = () => {
   const [users, setUsers] = useState([])
+  const [authChecked, setAuthChecked] = useState(false);
 
   const fetchUsers = async () => {
     try {
@@ -24,22 +24,29 @@ export default function ManageUser() {
     }
   }
 
-
-  const token = localStorage.getItem('user');
-  const decoded = jwtDecode(token);
-  // console.log(decoded.role);
   useEffect(() => {
+    const token = localStorage.getItem('user');
     if (!token) {
       window.location.href = '/login';
+      return;
     }
-    if (decoded.role !== 'admin') {
+    try {
+      const decoded = jwtDecode(token);
+      if (decoded.role !== 'admin') {
+        window.location.href = '/login';
+        return;
+      }
+      setAuthChecked(true);
+    } catch (err) {
       window.location.href = '/login';
     }
-  }, [token]);
+  }, []);
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    if (authChecked) {
+      fetchUsers();
+    }
+  }, [authChecked]);
 
   const handleDelete = async (userId) => {
     try {
@@ -55,6 +62,10 @@ export default function ManageUser() {
     } catch (error) {
       console.error("Error deleting user:", error);
     }
+  }
+
+  if (!authChecked) {
+    return null; // Or a loading spinner
   }
 
   return (
@@ -97,3 +108,5 @@ export default function ManageUser() {
     </div>
   )
 }
+
+export default ManageUser;
