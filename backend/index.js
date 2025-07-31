@@ -7,7 +7,9 @@ const cors = require('cors');
 ``
 
 app.use(cors({
-    origin: '*'
+    origin: '*',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
 }))
 app.use(express.json());
 app.use('/user', require('./routers/userRouter'));
