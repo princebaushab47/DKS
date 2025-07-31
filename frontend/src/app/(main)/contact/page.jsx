@@ -32,7 +32,7 @@ const Contact = () => {
         validationSchema: contactValidationSchema,
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             try {
-                const response = await axios.post('http://localhost:5000/contact/add', values);
+                const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/contact/add`, values);
                 console.log(response.data);
                 toast.success('Message sent successfully!');
                 resetForm();

@@ -10,7 +10,7 @@ const ManageContact = () => {
 
   const fetchContacts = async () => {
     try {
-      const response = await fetch("http://localhost:5000/contact/getAll", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contact/getAll`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const ManageContact = () => {
 
   const handleDelete = async (contactId) => {
     try {
-      const response = await fetch(`http://localhost:5000/contact/delete/${contactId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contact/delete/${contactId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

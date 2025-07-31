@@ -9,7 +9,7 @@ const ManageUser = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch("http://localhost:5000/user/getall", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/getall`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const ManageUser = () => {
 
   const handleDelete = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:5000/user/delete/${userId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/delete/${userId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

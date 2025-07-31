@@ -34,7 +34,7 @@ const Login = () => {
     validationSchema: loginValidationSchema,
     onSubmit: async (values, { setSubmitting }) => {
       try {
-        const response = await axios.post('http://localhost:5000/user/login', values);
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/login`, values);
         const userData = response.data;
         // console.log('Login successful:', userData);
         localStorage.setItem('user', userData.token);

@@ -34,9 +34,9 @@ export default function AdminDashboard() {
     const fetchData = async () => {
       try {
         const [contactsRes, feedbackRes, usersRes] = await Promise.all([
-          axios.get('http://localhost:5000/contact/getall'),
-          axios.get('http://localhost:5000/feedback/getall'),
-          axios.get('http://localhost:5000/user/getall'),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL}/contact/getall`),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL}/feedback/getall`),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/getall`),
         ]);
         setContacts(contactsRes.data.length);
         setFeedback(feedbackRes.data.length);

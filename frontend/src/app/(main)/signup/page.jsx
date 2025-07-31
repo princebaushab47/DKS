@@ -36,7 +36,7 @@ const Signup = () => {
     onSubmit: async (values, { resetForm, setSubmitting }) => {
       try {
         const { confirmPassword, ...userData } = values;
-        const response = await axios.post('http://localhost:5000/user/add', userData);
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/add`, userData);
         console.log(response.data);
         toast.success('Account created successfully!');
         resetForm();
