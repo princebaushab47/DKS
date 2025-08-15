@@ -10,7 +10,7 @@ const About = () => {
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">About DKS</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Learn about our mission to provide high-quality modular kitchens at affordable prices without compromising on
+            Learn about our mission to provide high-quality modular kitchens, TV Units and Wardrobe at affordable prices without compromising on
             design or quality.
           </p>
         </div>
@@ -109,8 +109,8 @@ const About = () => {
               Meet the experienced professionals who make DKS the trusted choice for modular kitchens.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[1, 2, 3, 4].map((index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {["Mr. Shubham Singh", "Mr. Prince Singh"].map((index) => (
                 <div key={index} className="text-center">
                   <div className="aspect-square rounded-xl overflow-hidden mb-6 max-w-[200px] mx-auto shadow-lg">
                     <img
@@ -119,7 +119,7 @@ const About = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">Team Member {index}</h3>
+                  <h3 className="text-xl font-semibold mb-2">{index}</h3>
                   <p className="text-muted-foreground">
                     {index === 1
                       ? "Founder & Lead Designer"
@@ -136,7 +136,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-primary text-primary-foreground">
+      {/* <section className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Kitchen?</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
@@ -172,7 +172,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
