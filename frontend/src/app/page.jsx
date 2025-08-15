@@ -134,7 +134,7 @@ export default function Page() {
   useEffect(() => {
     async function fetchFeedbacks() {
       try {
-        const res = await fetch("http://localhost:5000/feedback/getall")
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/feedback/getall`)
         if (!res.ok) throw new Error("Failed to fetch feedback")
         const data = await res.json()
         setFeedbacks(data)

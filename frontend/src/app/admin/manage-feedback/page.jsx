@@ -9,7 +9,7 @@ const ManageFeedback = () => {
 
   const fetchFeedbacks = async () => {
     try {
-      const response = await fetch("http://localhost:5000/feedback/getall", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/feedback/getall`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const ManageFeedback = () => {
 
   const handleDelete = async (feedbackId) => {
     try {
-      const response = await fetch(`http://localhost:5000/feedback/delete/${feedbackId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/feedback/delete/${feedbackId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
