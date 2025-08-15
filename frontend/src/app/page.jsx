@@ -35,7 +35,7 @@ const features = [
   {
     icon: <Ruler className="h-10 w-10" />,
     title: "Wardrobe and TV Units",
-    description: "We offer a wide range of wardrobe and TV units to choose from, and our wardrobe and TV units are sure to add a touch of elegance to your home.",
+    description: "We deals in wide range of styles wardrobe and TV units.",
   },
   {
     icon: <Layers3D className="h-10 w-10" />,
@@ -49,8 +49,8 @@ const features = [
   },
   {
     icon: <Cube className="h-10 w-10" />,
-    title: "10-Year Warranty",
-    description: "Enjoy peace of mind with our comprehensive 10-year warranty on all kitchen installations.",
+    title: "10-Years Warranty",
+    description: "Enjoy peace of mind with our comprehensive 10-years warranty on all kitchen equipment expect physical damage.",
   },
 ]
 
