@@ -62,18 +62,18 @@ const kitchenImages = [
   },
   {
     src: "/p1.jpg",
-    alt: "Elegant U-shaped kitchen",
-    type: "U-shaped",
+    // alt: "Elegant U-shaped kitchen",
+    // type: "U-shaped",
   },
   {
     src: "/p3.jpg",
-    alt: "Contemporary kitchen with island",
-    type: "Island",
+    // alt: "Contemporary kitchen with island",
+    // type: "Island",
   },
   {
     src: "/p5.jpg",
-    alt: "Minimalist galley kitchen",
-    type: "Galley",
+    // alt: "Minimalist galley kitchen",
+    // type: "Galley",
   },
 ]
 
@@ -420,7 +420,7 @@ export default function Page() {
         </section>
 
         {/* Contact Section */}
-        <section className="py-16 md:py-24 bg-primary text-primary-foreground">
+        {/* <section className="py-16 md:py-24 bg-primary text-primary-foreground">
           <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Kitchen?</h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
@@ -456,7 +456,7 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
     </>
   )
