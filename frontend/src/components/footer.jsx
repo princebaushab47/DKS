@@ -59,24 +59,19 @@ export function Footer() {
             <h3 className="font-bold mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="" className="text-muted-foreground hover:text-primary">
+                <p className="text-muted-foreground hover:text-primary">
                   Free 3D Design
-                </Link>
+                </p>
               </li>
               <li>
-                <Link href="/gallery" className="text-muted-foreground hover:text-primary">
+                <p className="text-muted-foreground hover:text-primary">
                   Kitchen Installation
-                </Link>
+                </p>
               </li>
               <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-primary">
+                <p className="text-muted-foreground hover:text-primary">
                   Kitchen Renovation
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-primary">
-                  Appliance Installation
-                </Link>
+                </p>
               </li>
             </ul>
           </div>
@@ -93,7 +88,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Designer Kitchens for Less. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} DKS Modular Kitchen. All rights reserved.</p>
           <div className="mt-2 space-x-4">
             <Link href="#" className="hover:text-primary">
               Privacy Policy
