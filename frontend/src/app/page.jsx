@@ -25,7 +25,7 @@ const features = [
   {
     icon: <Award className="h-10 w-10" />,
     title: "Premium Brands",
-    description: "We use only the best materials from Symphony, Hettich, and Ebco for lasting quality.",
+    description: "We use only the best materials from ebco, Hettich, Everwin and ozone for lasting quality.",
   },
   {
     icon: <Percent className="h-10 w-10" />,
@@ -217,7 +217,7 @@ export default function Page() {
                 <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
                   <Link href="/about">Explore</Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white/20">
+                <Button size="lg" asChild className="border bg-transparent hover:bg-white/20">
                   <Link href="/contact">Contact us</Link>
                 </Button>
               </div>
@@ -226,7 +226,7 @@ export default function Page() {
         </section>
 
         {/* Theme Showcase Section */}
-        <section className="py-16 md:py-24 bg-primary/5 border-b">
+        {/* <section className="py-16 md:py-24 bg-primary/5 border-b">
           <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h3 className="text-xl font-semibold mb-4 flex items-center justify-center gap-2">
@@ -242,7 +242,7 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Features Section */}
         <section className="py-16 md:py-24 bg-muted/50">
