@@ -25,7 +25,15 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-primary">DKS</span>
+              <img
+                src="/logo_2.png"
+                alt="DKS Logo"
+                className="h-20 w-auto" // Adjust height as needed
+                style={{ maxHeight: "65px" }} // Optional inline style for max height
+              />
+              {/* <span className="text-2xl font-bold text-primary hidden sm:inline">
+                DKS
+              </span> */}
             </Link>
           </div>
 
