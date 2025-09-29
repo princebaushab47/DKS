@@ -58,10 +58,18 @@ const Login = () => {
 
   return (
     <div className='min-h-screen bg-background'>
-      <section className="bg-muted py-16 md:py-24">
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Welcome Back</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <section className="relative py-16 md:py-24 overflow-hidden">
+      <div className="absolute inset-0 z-0">
+          <img
+            src="/image.png"
+            alt="Kitchen gallery background"
+            className="w-full h-full object-cover "
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div className="relative z-10 container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">Welcome Back</h1>
+          <p className="text-lg text-white/90 max-w-2xl mx-auto">
             Sign in to your DKS account to access your saved designs, track orders, and manage your profile.
           </p>
         </div>

@@ -28,7 +28,7 @@ export function Navbar() {
               <img
                 src="/logo_2.png"
                 alt="DKS Logo"
-                className="h-20 w-auto" // Adjust height as needed
+                className="h-20 w-auto " // Adjust height as needed
                 style={{ maxHeight: "65px" }} // Optional inline style for max height
               />
               {/* <span className="text-2xl font-bold text-primary hidden sm:inline">
@@ -54,9 +54,6 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center space-x-2">
-            <div className="hidden lg:block">
-              <ColorThemeSelector />
-            </div>
             <ThemeToggle />
             {user ? (
               <Button 

@@ -201,7 +201,7 @@ export default function Page() {
           <div className="absolute inset-0 z-0">
             <div className="relative h-full w-full">
               <div className="absolute inset-0 bg-black/40 dark:bg-black/60 z-10" />
-              <img src="/p12.jpg" alt="Modern kitchen design" className="h-full w-full object-cover" />
+              <img src="/image.png" alt="Modern kitchen design" className="h-full w-full object-cover" />
             </div>
           </div>
           <div className="container max-w-7xl relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40 lg:py-48 text-white">

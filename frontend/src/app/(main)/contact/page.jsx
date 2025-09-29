@@ -47,10 +47,18 @@ const Contact = () => {
 
     return (
         <div className='min-h-screen bg-background'>
-            <section className="bg-muted py-16 md:py-24">
-                <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <section className="relative py-16 md:py-24 overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <img
+                        src="/image.png"
+                        alt="Kitchen gallery background"
+                        className="w-full h-full object-cover "
+                    />
+                    <div className="absolute inset-0 bg-black/40"></div>
+                </div>
+                <div className="relative z-10 container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">Contact Us</h1>
+                    <p className="text-lg text-white/90 max-w-2xl mx-auto">
                         Have questions about our modular kitchens or services? Get in touch with our team and we'll be happy to help.
                     </p>
                 </div>
@@ -199,9 +207,9 @@ const Contact = () => {
                                 )}
                             </div>
 
-                            <Button 
-                                type="submit" 
-                                className="w-full h-12 text-base" 
+                            <Button
+                                type="submit"
+                                className="w-full h-12 text-base"
                                 disabled={formik.isSubmitting}
                             >
                                 {formik.isSubmitting ? 'Sending...' : 'Send Message'}
@@ -214,13 +222,13 @@ const Contact = () => {
             <section className="py-16 bg-muted">
                 <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="rounded-xl overflow-hidden h-[500px] shadow-lg">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.917403921849!2d82.7379202748915!3d26.81075846446554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3990d1b223cfce39%3A0xdc1f9db918469b7a!2sDKS%20MODULAR%20KITCHEN%20%26%20WARDROBE%20SHOWROOM!5e0!3m2!1sen!2sin!4v1748156286716!5m2!1sen!2sin" 
-                            width="100%" 
-                            height="100%" 
-                            style={{ border: 0 }} 
-                            allowFullScreen="" 
-                            loading="lazy" 
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.917403921849!2d82.7379202748915!3d26.81075846446554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3990d1b223cfce39%3A0xdc1f9db918469b7a!2sDKS%20MODULAR%20KITCHEN%20%26%20WARDROBE%20SHOWROOM!5e0!3m2!1sen!2sin!4v1748156286716!5m2!1sen!2sin"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen=""
+                            loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
                         />
                     </div>
